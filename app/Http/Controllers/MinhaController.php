@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CriarProdutos;
 
 class MinhaController extends Controller
 {
@@ -16,8 +18,20 @@ class MinhaController extends Controller
     }
 
 
-    public function criarProduto(Request $request) {
+    public function criarProduto(CriarProdutos $request) {
 
+      
+      //$validator = Validator::make($request->all(), [
+      //  'nome' => 'required|string',
+      //  'tipo' => 'string',
+      //  'preco' => 'numeric| min:0',
+      //  'quantidade' => 'integer|min:0'
+      //]);
+      //testa se a validação foi bem sucedida
+      //retorna o erro, caso não seja bem sucedida
+      //if ($validator->fails()) {
+      //return response()->json($validator->errors());
+      //}
       $novoProduto = new Produto;
 
       $novoProduto->nome = $request->nome;
@@ -28,8 +42,8 @@ class MinhaController extends Controller
       $novoProduto->quantidade = $request->quantidade;
 
       $novoProduto->save();
-
     }
+      
 
     public function atualizarProduto(Request $request, $id) {
 

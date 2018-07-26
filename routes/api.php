@@ -24,3 +24,5 @@ Route::post('/criarProduto', 'MinhaController@criarProduto');
 Route::put('/atualizarProduto/{id}', 'MinhaController@atualizarProduto');
 
 Route::delete('/deletarProduto/{id}', 'MinhaController@deletarProduto');
+
+Route::resource('clientes', 'ClienteController');
